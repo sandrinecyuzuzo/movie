@@ -13,6 +13,17 @@ function Deatils() {
     console.log("")
 
     useEffect(() => {
+
+        const ifuserisloggedin = ()=>{
+            const userdata = localStorage.getItem("userdata")
+            if(userdata == null) {
+                window.location.href="/login"
+        }
+        }
+
+        ifuserisloggedin()
+
+        
         const moviesData = async () => {
             const respone = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=a3311cd10c54967ca049ca5d14e4756d`)
             console.log("", respone.data.results[0])

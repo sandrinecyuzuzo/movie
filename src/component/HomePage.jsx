@@ -47,13 +47,13 @@ function Home() {
       console.log(error);
     }
   };
-  
+
 
   return (
     <>
-      
-      <div className='flex relative h-[42rem] items-end justify-center mx-20'>
-        <div className='w-[50%] flex flex-col bottom-0 left-16 h-[26rem] border-r-[1px] border-[#060606]'>
+
+      <div className='h-[42rem] items-end  mx-20 md:flex '>
+        <div className='w-1/2 flex flex-col bottom-0 left-16 h-[26rem] border-r-[1px] border-[#060606]'>
           <div className='w-1/3 h-[1px] bg-[#333232] self-end'></div>
           <h1 className='text-white text-4xl'>FIND THE MOVIE</h1>
           <h1 className='text-6xl grad-back'>TV SHOW AND MORE</h1>
@@ -72,25 +72,44 @@ function Home() {
 
         </div>
         <div className='relative w-1/2 h-[42rem] flex items-center justify-center border-b-[1px] border-[#333232]'>
-            <img className='w-[20rem] h-[31rem] -mb-20 -mr-20 z-10' src={image1} alt="" />
-            <img src={play} alt="Play" className="absolute inset-0 m-auto w-16 cursor-pointer " style={{ zIndex: 40 }} />
+          <img className='w-[20rem] h-[31rem] -mb-20 -mr-20 z-10' src={image1} alt="" />
+          <img src={play} alt="Play" className="absolute inset-0 m-auto w-16 cursor-pointer " style={{ zIndex: 40 }} />
           <img className='w-[20rem] h-[31rem]' src={images} alt="" />
           <span className='absolute bottom-0 right-0 -mb-1 w-2 h-2 bg-[#333232] rounded-full'></span>
         </div>
 
       </div>
+      <div className='pt-[20rem] sm:pt[35rem] md:'>
 
-      <div className='flex items-center px-4 py-2 text-white pt-24'>
-        <img src={sv} alt="sv" className='h-4 w-4' />
-        <p className='flex text-4xl'>Trending</p>
-        <hr className='flex-grow border-t border-gray-700 mx-4' />
-        <p className='flex'>See More</p>
-      </div>
-      <div className='grid grid-cols-10 gap-12 px-6 pt-12 pb-14'>
-        {movies.map((movie, index) => (
+        <div className='flex items-center px-4 py-2 text-white pt-24'>
+          <img src={sv} alt="sv" className='h-4 w-4' />
+          <p className='flex text-4xl'>Trending</p>
+          <hr className='flex-grow border-t border-gray-700 mx-4' />
+          <p className='flex'>See More</p>
+        </div>
+        <div className='grid grid-cols-1 md:grid-cols-7 sm:grid-cols-3 gap-12 px-6 pt-12'>
+          {movies.map((movie, index) => (
 
-          <NavLink to={`/details/${movie.id}`}>
+            <NavLink to={`/details/${movie.id}`}>
 
+              <Card
+                key={index}
+                titel={movie.original_title}
+                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                price={DataTransferItemList.vote_average}
+                vote={movie.vote_average}
+              />
+
+            </NavLink>
+          ))}
+        </div>
+        <div className='flex items-center px-4 text-white pt-32'>
+          <p className='flex font-bold text-4xl'>YOU MAY LIKE THIS</p>
+          <hr className='flex-grow border-t border-gray-700 mx-4' />
+          <p className='flex'>See More</p>
+        </div>
+        <div className='grid grid-cols-1 md:grid-cols-7 sm:grid-cols-3 gap-12 px-6 py-32'>
+          {move.map((movie, index) => (
             <Card
               key={index}
               titel={movie.original_title}
@@ -98,25 +117,8 @@ function Home() {
               price={DataTransferItemList.vote_average}
               vote={movie.vote_average}
             />
-
-          </NavLink>
-        ))}
-      </div>
-      <div className='flex items-center px-4 text-white pt-24'>
-        <p className='flex font-bold text-4xl'>YOU MAY LIKE THIS</p>
-        <hr className='flex-grow border-t border-gray-700 mx-4' />
-        <p className='flex'>See More</p>
-      </div>
-      <div className='grid grid-cols-10 gap-12 px-6 pt-12'>
-        {move.map((movie, index) => (
-          <Card
-            key={index}
-            titel={movie.original_title}
-            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            price={DataTransferItemList.vote_average}
-            vote={movie.vote_average}
-          />
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );
