@@ -3,24 +3,24 @@ import logo from './logos.png';
 
 function Navigation() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for toggling menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleSearch = () => {
     if (searchTerm.trim() !== '') {
-      // Handle search
+
     }
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle menu state
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav className="bg-black py-4 sticky top-0 w-full z-50">
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <img src={logo} alt='logo' />
-          {/* Hamburger Icon for small devices */}
+        <div className="flex justify-between items-center  ">
+          <img src={logo} alt='logo' className='pt-10' />
+
           <div className="md:hidden">
             <button onClick={toggleMenu} className="text-gray-300 hover:text-white focus:outline-none">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,11 +32,10 @@ function Navigation() {
               </svg>
             </button>
           </div>
-          {/* End of Hamburger Icon */}
-          {/* Navigation links */}
-          <div className={`md:flex md:items-center ${isMenuOpen ? 'block' : 'hidden' }`}>
-            <div className=" md:flex space-x-6">
-              <a href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+
+          <div className={`md:flex absolute top-14 right-0 md:items-center  ${isMenuOpen ? 'block' : 'hidden'}`}>
+            <div className="flex flex-col md:flex-row space-x-5 mx-12">
+              <a href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm-4xl ">Home</a>
               <a href="/Explorer" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Explorer</a>
               <a href="/News" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</a>
               <a href="/TV Shows" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">TV Shows</a>
@@ -45,7 +44,7 @@ function Navigation() {
               <a href="/search" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search</a>
             </div>
           </div>
-          {/* End of Navigation links */}
+
         </div>
       </div>
     </nav>
